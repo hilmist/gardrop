@@ -1,10 +1,9 @@
-Gardrops Image Upload Session Micro-services (Spring
-Boot) Assignment
+## Gardrops Image Upload Session Microservices (Spring Boot) Assignment
 
 This project is a **Spring Boot microservices-based pipeline** for uploading and processing images.  
 It consists of two services: a **ImageUploadApi** for session management & uploads, and an **ImageProcessingApi** for image processing.
 
-## 🧱 Architecture
+##  Architecture
 
 ### 1️⃣ **ImageUploadApi**
 - Port: **8080**
