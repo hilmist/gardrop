@@ -28,11 +28,11 @@ public class ImageProcessorService {
     public ProcessResult process(MultipartFile multipartFile, String destinationFilePath) {
         try {
             BufferedImage inputImage = ImageIO.read(multipartFile.getInputStream());
-            // null kontrolü ekledik
+            // null kontrolü
             if (inputImage == null) {
                 throw new IllegalArgumentException("Yüklenen dosya geçerli bir görsel formatında değil.");
             }
-            // Oranı koruyarak boyutlandır
+            // Boyutlandırma
             Dimension newSize = resizeKeepingAspect(inputImage.getWidth(), inputImage.getHeight());
             BufferedImage resizedImage = new BufferedImage(newSize.width, newSize.height, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = resizedImage.createGraphics();
@@ -44,7 +44,7 @@ public class ImageProcessorService {
             Files.createDirectories(outputPath);
             File outputFile = outputPath.resolve(destinationFilePath).toFile();
 
-            // %90 kalite ile sıkıştır ve yaz
+            // %90 kalite ile resmi yeniden oluşturma
             try (OutputStream os = new FileOutputStream(outputFile)) {
                 Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
                 ImageWriter writer = writers.next();
